@@ -11,7 +11,7 @@ Game.prototype.add = function(type, x, y, id) {
   this.refElem.appendChild(elem);
   elems.append(id);
 };
-Game.prototype.chain = function(event, elementId, func) {
+Game.prototype.chain = function(elementId, event, func) {
   if (event == 'click') {
     document.getElementById(elementId).addEventListener('click', function() {
       func();
