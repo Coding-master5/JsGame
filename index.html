@@ -1,0 +1,12 @@
+<h1>jsGame runner</h1>
+<br>
+<button onclick='run()'>Run</button>
+<script src='https://coding-master5.github.io/jsGame/index.js'></script>
+<script>
+  function run() {
+    var game = new Game('testGame');
+    game.add('button', '50%', '50%', 'btn');
+    game.chain('btn', 'click', function() {alert('You clicked the button!')});
+    game.run();
+  }
+</script>
