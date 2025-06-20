@@ -17,9 +17,9 @@ class Game {
   }
   #drawTriangle(x1, y1, z1, x2, y2, z2, x3, y3, z3, c) {
     this.ctx.beginPath();
-    this.ctx.moveTo((x1+this.camX)/(z1*fov+this.camZ)+this.canvas.width/2, (y1+this.camY)/(z1*fov+this.camZ)+this.canvas.height/2);
-    this.ctx.lineTo((x2+this.camX)/(z2*fov+this.camZ)+this.canvas.width/2, (y2+this.camY)/(z2*fov+this.camZ)+this.canvas.height/2);
-    this.ctx.lineTo((x3+this.camX)/(z3*fov+this.camZ)+this.canvas.width/2, (y3+this.camY)/(z3*fov+this.camZ)+this.canvas.height/2);
+    this.ctx.moveTo((x1+this.camX)/(z1*this.fov+this.camZ)+this.canvas.width/2, (y1+this.camY)/(z1*this.fov+this.camZ)+this.canvas.height/2);
+    this.ctx.lineTo((x2+this.camX)/(z2*this.fov+this.camZ)+this.canvas.width/2, (y2+this.camY)/(z2*this.fov+this.camZ)+this.canvas.height/2);
+    this.ctx.lineTo((x3+this.camX)/(z3*this.fov+this.camZ)+this.canvas.width/2, (y3+this.camY)/(z3*this.fov+this.camZ)+this.canvas.height/2);
     this.ctx.closePath();
     this.ctx.fillStyle = c || 'black';
     this.ctx.fill();
