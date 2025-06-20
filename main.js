@@ -1,40 +1,29 @@
-var elems = [];
-var Game = function(name) {
-  this.name = name;
-  this.refElem = document.createElement('canvas');
-};
-Game.prototype.add = function(type, x, y, id) {
-  var elem = document.createElement(type);
-  elem.id = id;
-  elem.top = y;
-  elem.left = x;
-  this.refElem.appendChild(elem);
-  elems.append(id);
-};
-Game.prototype.chain = function(elementId, event, func) {
-  if (event == 'click') {
-    document.getElementById(elementId).addEventListener('click', function() {
-      func();
-    });
+function drawTriangle(x1, y1, z1, x2, y2, z2, x3, y3, z3, c) {
+  this.ctx.beginPath();
+  this.ctx.moveTo(x1/z1+canvas.width/2, y1/z1+canvas.height/2);
+  this.ctx.lineTo(x2/z2+canvas.width/2, y2/z2+canvas.height/2);
+  this.ctx.lineTo(x3/z3+canvas.width/2, y3/z3+canvas.height/2);
+  this.ctx.closePath();
+  this.ctx.fillStyle = c || 'black';
+  this.ctx.fill();
+}
+function drawPlane(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, c) {
+  drawTriangle(x1, y1, z1, x2, y2, z2, x4, y4, z4, c);
+  drawTriangle(x2, y2, z2, x4, y4, z4, x3, y3, z3, c);
+}
+class Game {
+  constructor(w, h) {
+    var canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    this.ctx = canvas.getContext('2d');
   }
-  else if (event == 'dblclick') {
-    document.getElementById(elementId).addEventListener('dblclick', function() {
-      func();
-    });
+  function drawQuad(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8, c) {
+  	drawPlane(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, c);
+    drawPlane(x5, y5, z5, x6, y6, z6, x7, y7, z7, x8, y8, z8, c);
+    drawPlane(x1, y1, z1, x2, y2, z2, x6, y6, z6, x5, y5, z5, c);
+    drawPlane(x2, y2, z2, x3, y3, z3, x7, y7, z7, x6, y6, z6, c);
+    drawPlane(x4, y4, z4, x3, y3, z3, x7, y7, z7, x8, y8, z8, c);
+    drawPlane(x1, y1, z1, x4, y4, z4, x8, y8, z8, x5, y5, z5, c);
   }
-  else if (event == 'mouseover') {
-    document.getElementById(elementId).addEventListener('mouseover', function() {
-      func();
-    });
-  }
-  else if ('keypress' in event) {
-    document.addEventListener('keypress', function(e) {
-      if (e.keyCode == event.substr(9, event.length)) {
-        func();
-      }
-    });
-  }
-};
-Game.prototype.run = function() {
-  document.body.appendChild(this.refElem);
-};
+}
