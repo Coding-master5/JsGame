@@ -5,6 +5,7 @@ class Game {
     canvas.height = h;
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
+    document.body.appendChild(canvas);
   }
   #drawTriangle(x1, y1, z1, x2, y2, z2, x3, y3, z3, c) {
     this.ctx.beginPath();
