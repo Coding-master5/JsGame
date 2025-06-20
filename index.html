@@ -1,12 +1,10 @@
-<h1>jsGame runner</h1>
+<title>crappy jsgame thingamajig</title>
+<h1>jsGame demo</h1>
 <br>
-<button onclick='run()'>Run</button>
-<script src='https://coding-master5.github.io/jsGame/main.js'></script>
+<script src='https://coding-master5.github.io/JsGame/main.js'></script>
 <script>
   function run() {
-    var game = new Game('testGame');
-    game.add('button', '50%', '50%', 'btn');
-    game.chain('btn', 'click', function() {alert('You clicked the button!')});
-    game.run();
+    var game = new Game(500, 500);
+    game.drawQuad(50, 50, 1.25, 150, 50, 1.25, 150, 50, 1, 50, 50, 1, 50, 150, 1.25, 150, 150, 1.25, 150, 150, 1, 50, 150, 1, '#f00');
   }
 </script>
