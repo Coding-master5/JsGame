@@ -1,12 +1,18 @@
-<title>crappy jsgame thingamajig</title>
-<h1>jsGame demo</h1>
+<title>JsGame demo</title>
+<link rel='icon' type='image/x-icon' href='https://coding-master5.github.io/JsGame/JsGame.png'>
+<h1>JsGame demo</h1>
 <br>
-<button onclick='run()'>do stuf</button>
+<label>X</label><input type='range' min='-200' max='200' oninput='x = Number(this.value)-50;this.nextElementSibling.innerText = this.value;'><label>0</label>
+<label>Y</label><input type='range' min='-200' max='200' oninput='y = Number(this.value)-50;this.nextElementSibling.innerText = this.value;'><label>0</label>
+<label>Z</label><input type='range' min='1' max='10' oninput='z = Number(this.value);this.nextElementSibling.innerText = this.value;'><label>0</label>
 <script src='https://coding-master5.github.io/JsGame/main.js'></script>
 <script>
-  function run() {
-    var game = new Game(500, 500);
-    document.body.appendChild(game.canvas);
-    game.drawQuad(50, 50, 1.25, 150, 50, 1.25, 150, 50, 1, 50, 50, 1, 50, 150, 1.25, 150, 150, 1.25, 150, 150, 1, 50, 150, 1, '#f00');
-  }
+  var x = -50;
+  var y = -50;
+  var z = 1;
+  var game = new Game(500, 500);
+  setInterval(function() {
+  	game.ctx.clearRect(0, 0, 500, 500);
+  	game.drawQuad(x, y, z+.25, x+100, y, z+.25, x+100, y, z, x, y, z, x, y+100, z+.25, x+100, y+100, z+.25, x+100, y+100, z, x, y+100, z, '#f00');
+  }, 1);
 </script>
